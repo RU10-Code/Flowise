@@ -4,9 +4,8 @@ services:
     flowise:
         image: flowiseai/flowise
         restart: always
-        exclude_from_hc: true
         environment:
-            - PORT=${PORT}
+            - PORT=3000
             - CORS_ORIGINS=${CORS_ORIGINS}
             - IFRAME_ORIGINS=${IFRAME_ORIGINS}
             - FLOWISE_USERNAME=${FLOWISE_USERNAME}
@@ -32,7 +31,7 @@ services:
             - MODEL_LIST_CONFIG_JSON=${MODEL_LIST_CONFIG_JSON}
             
         ports:
-            - '${PORT}:${PORT}'
+            - '3000:${PORT}'
         volumes:
             - ~/.flowise:/root/.flowise
         entrypoint: /bin/sh -c "sleep 3; flowise start"
